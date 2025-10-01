@@ -26,7 +26,8 @@ const Header: React.FC = () => {
     { label: 'Rạp chiếu', href: '/cinemas', hasDropdown: true },
     { label: 'Tin tức', href: '/news' },
     { label: 'Khuyến mãi', href: '/promotions' },
-    { label: 'Liên hệ', href: '/contact' }
+    { label: 'Liên hệ', href: '/contact' },
+    { label: 'Admin', href: '/admin', isAdmin: true }
   ];
 
   const handleCinemaSelect = (cinema: any) => {
@@ -118,6 +119,8 @@ const Header: React.FC = () => {
                     className={`text-sm font-medium transition-colors ${
                       item.active
                         ? 'text-white border-b-2 border-red-500 pb-1'
+                        : item.isAdmin
+                        ? 'text-blue-400 hover:text-blue-300 font-semibold'
                         : 'text-gray-300 hover:text-white'
                     }`}
                   >

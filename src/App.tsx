@@ -15,6 +15,17 @@ import SettingsPage from './pages/SettingsPage';
 import ContactPage from './pages/ContactPage';
 import CinemasPage from './pages/CinemasPage';
 import NewsPage from './pages/NewsPage';
+import AdminLayout from './layouts/AdminLayout';
+import DashboardPage from './pages/admin/DashboardPage';
+import MoviesManagement from './pages/admin/MoviesManagement';
+import CinemasManagement from './pages/admin/CinemasManagement';
+import UsersManagement from './pages/admin/UsersManagement';
+import BookingsManagement from './pages/admin/BookingsManagement';
+import AnalyticsPage from './pages/admin/AnalyticsPage';
+import ShowtimesManagement from './pages/admin/ShowtimesManagement';
+import NewsManagement from './pages/admin/NewsManagement';
+import PromotionsManagement from './pages/admin/PromotionsManagement';
+import AdminSettings from './pages/admin/AdminSettings';
 
 function App() {
   return (
@@ -25,6 +36,25 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/forgot-password" element={<ForgotPasswordPage />} />
+          
+          {/* Admin routes - with AdminLayout */}
+          <Route path="/admin/*" element={
+            <AdminLayout>
+              <Routes>
+                <Route path="/" element={<DashboardPage />} />
+                <Route path="/movies" element={<MoviesManagement />} />
+                <Route path="/cinemas" element={<CinemasManagement />} />
+                <Route path="/users" element={<UsersManagement />} />
+                <Route path="/bookings" element={<BookingsManagement />} />
+                <Route path="/analytics" element={<AnalyticsPage />} />
+                <Route path="/showtimes" element={<ShowtimesManagement />} />
+                <Route path="/promotions" element={<PromotionsManagement />} />
+                <Route path="/news" element={<NewsManagement />} />
+                <Route path="/settings" element={<AdminSettings />} />
+                <Route path="*" element={<div className="p-8 text-center">404 - Admin Page Not Found</div>} />
+              </Routes>
+            </AdminLayout>
+          } />
           
           {/* Main app routes - with MainLayout */}
           <Route path="/*" element={
